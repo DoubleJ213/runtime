@@ -14,8 +14,7 @@
 # limitations under the License.
 cd "$(dirname "$0")" >/dev/null 2>&1 || exit
 source common.sh
-registry_domain=${1:-sealos.hub}
-registry_domain=magickube.hub
+registry_domain=${1:-magickube.hub}
 registry_port=${2:-5000}
 
 mkdir -p /opt/containerd && tar -zxf ../cri/libseccomp.tar.gz -C /opt/containerd
