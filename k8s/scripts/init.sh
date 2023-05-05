@@ -19,6 +19,7 @@ if ! bash init-shim.sh; then
   error "====init image-cri-shim failed!===="
 fi
 
+
 if ! bash init-kube.sh; then
   error "====init kubelet failed!===="
 fi

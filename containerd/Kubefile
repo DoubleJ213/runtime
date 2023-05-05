@@ -1,11 +1,10 @@
 FROM scratch
 MAINTAINER sealos
-LABEL init="init-cri.sh && bash init.sh" \
+LABEL init="init-cri.sh \$registryDomain \$registryPort && bash init.sh" \
       clean="clean.sh && bash clean-cri.sh \$criData" \
       check="check.sh \$registryData" \
       init-registry="init-registry.sh \$registryData \$registryConfig" \
       clean-registry="clean-registry.sh \$registryData \$registryConfig" \
-      auth="auth.sh" \
       sealos.io.type="rootfs" \
       sealos.io.version="v1beta1" \
       version="v0.0.0" \
@@ -20,5 +19,6 @@ ENV criData=/var/lib/containerd \
     registryPassword=passw0rd \
     disableApparmor=false \
     sandboxImage=__pause__ \
-    defaultVIP=10.103.97.2
+    defaultVIP=10.103.97.2 \
+    SEALOS_SYS_CRI_ENDPOINT=/var/run/containerd/containerd.sock
 COPY . .
