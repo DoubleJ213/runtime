@@ -40,6 +40,11 @@ else
 fi
 
 sysctl --system
+
+if [ -f "/etc/sysctl.d/sealos-k8s.conf" ];then
+  sysctl -p /etc/sysctl.d/sealos-k8s.conf
+fi
+
 # systemctl stop firewalld && systemctl disable firewalld
 swapoff -a || true
 disable_selinux
